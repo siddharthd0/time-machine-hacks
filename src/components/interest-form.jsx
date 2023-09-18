@@ -37,13 +37,14 @@ const TerminalHeader = () => {
       <div className="w-3 h-3 rounded-full bg-yellow-500" />
       <div className="w-3 h-3 rounded-full bg-green-500" />
       <span className="text-sm text-slate-200 font-semibold absolute left-[50%] -translate-x-[50%]">
-        register@hackathon.dev
+        Register Form
       </span>
     </div>
   );
 };
 
 const TerminalBody = ({ containerRef, inputRef }) => {
+    const [errorMessage, setErrorMessage] = useState(null); 
   const [focused, setFocused] = useState(false);
   const [text, setText] = useState("");
 
@@ -53,26 +54,56 @@ const TerminalBody = ({ containerRef, inputRef }) => {
 
   const handleSubmitLine = (value) => {
     if (curQuestion) {
-      setQuestions((pv) =>
-        pv.map((q) => {
-          if (q.key === curQuestion.key) {
-            return {
-              ...q,
-              complete: true,
-              value,
-            };
-          }
-          return q;
-        })
-      );
+      let isValid = true;
+      let errorMsg = '';
+
+      if (curQuestion.key === 'email') {
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailRegex.test(value)) {
+          isValid = false;
+          errorMsg = 'Invalid email format';
+        }
+      }
+
+      if (curQuestion.key === 'github_link') {
+        const githubUrlRegex = /^(https?:\/\/github\.com\/[a-zA-Z0-9_-]+)$/;
+        if (!githubUrlRegex.test(value)) {
+          isValid = false;
+          errorMsg = 'Invalid GitHub URL';
+        }
+      }
+
+      if (value.trim() === '') {
+        isValid = false;
+        errorMsg = 'Field cannot be empty';
+      }
+
+      if (isValid) {
+        setQuestions((pv) =>
+          pv.map((q) => {
+            if (q.key === curQuestion.key) {
+              return {
+                ...q,
+                complete: true,
+                value,
+              };
+            }
+            return q;
+          })
+        );
+        setErrorMessage(null); ``
+
+      } else {
+        setErrorMessage(errorMsg);
+      }
     }
   };
 
   return (
     <div className="p-2 text-slate-100 text-lg">
-      <InitialText />
-      <PreviousQuestions questions={questions} />
-      <CurrentQuestion curQuestion={curQuestion} />
+    <InitialText />
+    <PreviousQuestions questions={questions} />
+    <CurrentQuestion curQuestion={curQuestion} errorMessage={errorMessage} />
       {curQuestion ? (
         <CurLine
           text={text}
@@ -94,7 +125,7 @@ const TerminalBody = ({ containerRef, inputRef }) => {
 const InitialText = () => {
   return (
     <>
-      <p>Hey there! We're excited to link 🔗</p>
+      <p>Hey there! We're excited to have you registering!</p>
       <p className="whitespace-nowrap overflow-hidden font-light">
         ------------------------------------------------------------------------
       </p>
@@ -128,19 +159,25 @@ const PreviousQuestions = ({ questions }) => {
   );
 };
 
-const CurrentQuestion = ({ curQuestion }) => {
-  if (!curQuestion) return <></>;
-
-  return (
-    <p>
-      {curQuestion.text || ""}
-      {curQuestion.postfix && (
-        <span className="text-violet-300">{curQuestion.postfix}</span>
-      )}
-    </p>
-  );
-};
-
+const CurrentQuestion = ({ curQuestion, errorMessage }) => {
+    if (!curQuestion) return <></>;
+  
+    return (
+      <div>
+        <p>
+          {curQuestion.text || ""}
+          {curQuestion.postfix && (
+            <span className="text-violet-300">{curQuestion.postfix}</span>
+          )}
+        </p>
+        {errorMessage && (
+          <p className="text-red-500 text-sm">
+            {errorMessage}
+          </p>
+        )}
+      </div>
+    );
+  };
 const Summary = ({ questions, setQuestions }) => {
   const [complete, setComplete] = useState(false);
 
@@ -152,12 +189,24 @@ const Summary = ({ questions, setQuestions }) => {
     const formData = questions.reduce((acc, val) => {
       return { ...acc, [val.key]: val.value };
     }, {});
-
-    // Send this data to your server or whatever :)
-    console.log(formData);
-
-    setComplete(true);
+  
+    fetch('/api/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data);
+      setComplete(true);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
   };
+  
 
   return (
     <>
