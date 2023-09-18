@@ -5,15 +5,13 @@ import {
   useScroll,
   motion,
 } from "framer-motion";
-
+import Image from "next/image"
 const TrippyHero = () => {
   return (
     <section className="bg-white">
       <Navigation />
       <Hero />
-      <div className="grid h-screen place-content-center bg-violet-600 text-sm font-semibold text-white">
-        <span>The rest of your website {":)"}</span>
-      </div>
+    
     </section>
   );
 };
@@ -173,24 +171,7 @@ const OverlayLogo = ({ scale }) => {
       style={{ scale }}
       className="pointer-events-none absolute inset-0 z-[5] grid place-content-center"
     >
-      {/* SVG from logoipsum */}
-      <svg
-        width="50"
-        height="39"
-        viewBox="0 0 50 39"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-auto w-32 fill-white"
-      >
-        <path
-          d="M16.4992 2H37.5808L22.0816 24.9729H1L16.4992 2Z"
-          stopColor="#000000"
-        ></path>
-        <path
-          d="M17.4224 27.102L11.4192 36H33.5008L49 13.0271H32.7024L23.2064 27.102H17.4224Z"
-          stopColor="#000000"
-        ></path>
-      </svg>
+      <Image width={350} height={350} src="/tech-optimum-whiteish.png" />
     </motion.div>
   );
 };
