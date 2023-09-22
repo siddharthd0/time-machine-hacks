@@ -8,23 +8,23 @@ const TerminalHackathonRegister = () => {
 
   return (
     <section
-      style={{
-        backgroundImage:
-          "url(https://images.unsplash.com/photo-1482686115713-0fbcaced6e28?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1734&q=80)",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-      className="px-4 py-12 bg-violet-600"
+     
+      className="px-4 py-12 "
     >
       <div
         ref={containerRef}
         onClick={() => {
           inputRef.current?.focus();
         }}
-        className="h-96 bg-slate-950/70 backdrop-blur rounded-lg w-full max-w-3xl mx-auto overflow-y-scroll shadow-xl cursor-text font-mono"
+        className="h-96 bg-slate-950/70 backdrop-blur rounded-lg w-full max-w-3xl mx-auto overflow-y-scroll shadow-xl cursor-text "
       >
-        <TerminalHeader />
-        <TerminalBody inputRef={inputRef} containerRef={containerRef} />
+        <h1 className="text-slate-200 text-4xl mb-[2rem] font-semibold text-center ">
+          Register for Time Machine Hacks{" "}
+        </h1>
+        <div className="font-mono">
+          <TerminalHeader />
+          <TerminalBody inputRef={inputRef} containerRef={containerRef} />
+        </div>
       </div>
     </section>
   );
@@ -44,7 +44,7 @@ const TerminalHeader = () => {
 };
 
 const TerminalBody = ({ containerRef, inputRef }) => {
-    const [errorMessage, setErrorMessage] = useState(null); 
+  const [errorMessage, setErrorMessage] = useState(null);
   const [focused, setFocused] = useState(false);
   const [text, setText] = useState("");
 
@@ -55,27 +55,27 @@ const TerminalBody = ({ containerRef, inputRef }) => {
   const handleSubmitLine = (value) => {
     if (curQuestion) {
       let isValid = true;
-      let errorMsg = '';
+      let errorMsg = "";
 
-      if (curQuestion.key === 'email') {
+      if (curQuestion.key === "email") {
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         if (!emailRegex.test(value)) {
           isValid = false;
-          errorMsg = 'Invalid email format';
+          errorMsg = "Invalid email format";
         }
       }
 
-      if (curQuestion.key === 'github_link') {
+      if (curQuestion.key === "github_link") {
         const githubUrlRegex = /^(https?:\/\/github\.com\/[a-zA-Z0-9_-]+)$/;
         if (!githubUrlRegex.test(value)) {
           isValid = false;
-          errorMsg = 'Invalid GitHub URL';
+          errorMsg = "Invalid GitHub URL";
         }
       }
 
-      if (value.trim() === '') {
+      if (value.trim() === "") {
         isValid = false;
-        errorMsg = 'Field cannot be empty';
+        errorMsg = "Field cannot be empty";
       }
 
       if (isValid) {
@@ -91,8 +91,8 @@ const TerminalBody = ({ containerRef, inputRef }) => {
             return q;
           })
         );
-        setErrorMessage(null); ``
-
+        setErrorMessage(null);
+        ``;
       } else {
         setErrorMessage(errorMsg);
       }
@@ -100,10 +100,10 @@ const TerminalBody = ({ containerRef, inputRef }) => {
   };
 
   return (
-    <div className="p-2 text-slate-100 text-lg">
-    <InitialText />
-    <PreviousQuestions questions={questions} />
-    <CurrentQuestion curQuestion={curQuestion} errorMessage={errorMessage} />
+    <div className=" bg-slate-800 p-2 text-slate-100 text-lg">
+      <InitialText />
+      <PreviousQuestions questions={questions} />
+      <CurrentQuestion curQuestion={curQuestion} errorMessage={errorMessage} />
       {curQuestion ? (
         <CurLine
           text={text}
@@ -160,24 +160,20 @@ const PreviousQuestions = ({ questions }) => {
 };
 
 const CurrentQuestion = ({ curQuestion, errorMessage }) => {
-    if (!curQuestion) return <></>;
-  
-    return (
-      <div>
-        <p>
-          {curQuestion.text || ""}
-          {curQuestion.postfix && (
-            <span className="text-violet-300">{curQuestion.postfix}</span>
-          )}
-        </p>
-        {errorMessage && (
-          <p className="text-red-500 text-sm">
-            {errorMessage}
-          </p>
+  if (!curQuestion) return <></>;
+
+  return (
+    <div>
+      <p>
+        {curQuestion.text || ""}
+        {curQuestion.postfix && (
+          <span className="text-violet-300">{curQuestion.postfix}</span>
         )}
-      </div>
-    );
-  };
+      </p>
+      {errorMessage && <p className="text-red-500 text-sm">{errorMessage}</p>}
+    </div>
+  );
+};
 const Summary = ({ questions, setQuestions }) => {
   const [complete, setComplete] = useState(false);
 
@@ -189,24 +185,23 @@ const Summary = ({ questions, setQuestions }) => {
     const formData = questions.reduce((acc, val) => {
       return { ...acc, [val.key]: val.value };
     }, {});
-  
-    fetch('/api/register', {
-      method: 'POST',
+
+    fetch("/api/register", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
     })
-    .then(response => response.json())
-    .then(data => {
-      console.log('Success:', data);
-      setComplete(true);
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+        setComplete(true);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
-  
 
   return (
     <>
@@ -317,48 +312,46 @@ const CurLine = ({
 export default TerminalHackathonRegister;
 
 const QUESTIONS = [
-    {
-      key: "email",
-      text: "To kick things off, what's ",
-      postfix: "your email?",
-      complete: false,
-      value: "",
-    },
-    {
-      key: "name",
-      text: "Great! What's ",
-      postfix: "your name?",
-      complete: false,
-      value: "",
-    },
-    {
-      key: "team_name",
-      text: "Do you have a ",
-      postfix: "team name?",
-      complete: false,
-      value: "",
-    },
-    {
-      key: "project_idea",
-      text: "Awesome! What's your ",
-      postfix: "project idea?",
-      complete: false,
-      value: "",
-    },
-    {
-      key: "tech_stack",
-      text: "What ",
-      postfix: "tech stack will you use?",
-      complete: false,
-      value: "",
-    },
-    {
-      key: "github_link",
-      text: "Finally, could you share ",
-      postfix: "your GitHub profile link?",
-      complete: false,
-      value: "",
-    },
-  ];
-  
-  
+  {
+    key: "email",
+    text: "To kick things off, what's ",
+    postfix: "your email?",
+    complete: false,
+    value: "",
+  },
+  {
+    key: "name",
+    text: "Great! What's ",
+    postfix: "your name?",
+    complete: false,
+    value: "",
+  },
+  {
+    key: "team_name",
+    text: "Do you have a ",
+    postfix: "team name?",
+    complete: false,
+    value: "",
+  },
+  {
+    key: "project_idea",
+    text: "Awesome! What's your ",
+    postfix: "project idea?",
+    complete: false,
+    value: "",
+  },
+  {
+    key: "tech_stack",
+    text: "What ",
+    postfix: "tech stack will you use?",
+    complete: false,
+    value: "",
+  },
+  {
+    key: "github_link",
+    text: "Finally, could you share ",
+    postfix: "your GitHub profile link?",
+    complete: false,
+    value: "",
+  },
+];

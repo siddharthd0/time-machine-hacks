@@ -5,16 +5,20 @@ import { FiDollarSign, FiEye, FiPlay, FiSearch } from "react-icons/fi";
 const Example = () => {
   return (
     <>
-      <div className="flex h-48 flex-col items-center justify-center bg-slate-900">
-        <span className="font-semibold uppercase text-white">Time Machine Hacks: Layout</span>
+      <div className="flex flex-col items-center justify-center -mt-[-10vh]">
+        <span className="font-semibold text-4xl text-white">How does Time Machine Hacks work?</span>
+        <span className="-mt[2rem]">
+          Time Machine Hacks is a 24-hour hackathon where you can build anything you want! 
+        
+        </span>
         <span className="mt-2 block rounded-full bg-indigo-600 px-4 py-1 text-center font-medium text-white md:hidden">
-          Note: This is much cooler on desktop 😊
+          Note: This is much cooler on desktop 
         </span>
       </div>
+      <div className="-mt-[18vh]">
       <SwapColumnFeatures />
-      <div className="flex h-48 items-center justify-center bg-indigo-600">
-        <span className="font-semibold uppercase text-white">Scroll up</span>
       </div>
+   
     </>
   );
 };
@@ -25,9 +29,7 @@ const SwapColumnFeatures = () => {
   return (
     <section className="relative mx-auto max-w-7xl">
       <SlidingFeatureDisplay featureInView={featureInView} />
-
-      {/* Offsets the height of SlidingFeatureDisplay so that it renders on top of Content to start */}
-      <div className="-mt-[100vh] hidden md:block" />
+      <div className="-mt-[60vh] hidden md:block" />
 
       {features.map((s) => (
         <Content
@@ -143,7 +145,7 @@ const ExampleFeature = ({ featureInView }) => {
     const commandsToShow = commandsMap[featureInView.title] || [];
   
     return (
-      <div className="relative h-96 w-full rounded-xl bg-slate-800 shadow-xl">
+      <div className="relative h-80 w-full rounded-xl bg-slate-800 shadow-xl">
         <div className="flex w-full gap-1.5 rounded-t-xl bg-slate-900 p-3">
           <div className="h-3 w-3 rounded-full bg-red-500" />
           <div className="h-3 w-3 rounded-full bg-yellow-500" />

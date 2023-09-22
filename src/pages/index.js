@@ -15,7 +15,7 @@ export default function Home() {
    <Countdown/>
    <Days/>
    <Interest/>
-   <Previous/>
+
    </>
   )
 }
