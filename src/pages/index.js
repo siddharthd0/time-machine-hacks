@@ -5,6 +5,7 @@ import Countdown from "../components/countdown"
 import Days from "../components/days"
 import Interest from "../components/interest-form"
 import Previous from "../components/previous-projects"
+import Faq from "../components/faq"
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,6 +16,7 @@ export default function Home() {
    <Countdown/>
    <Days/>
    <Interest/>
+   <Faq/>
 
    </>
   )

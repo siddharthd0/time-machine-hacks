@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { FiPlus } from "react-icons/fi";
 import React, { useState } from "react";
+import { AiOutlineClockCircle} from "react-icons/ai";
 
 export const TabsFAQ = () => {
   const [selected, setSelected] = useState(TABS[0]);
@@ -13,6 +14,7 @@ export const TabsFAQ = () => {
     </section>
   );
 };
+export default TabsFAQ;
 
 const Heading = () => {
   return (
@@ -24,7 +26,7 @@ const Heading = () => {
         <span className="mb-8 text-5xl font-bold">FAQs</span>
       </div>
 
-      <span className="absolute -top-[350px] left-[50%] z-0 h-[500px] w-[600px] -translate-x-[50%] rounded-full bg-gradient-to-r from-violet-600/20 to-indigo-600/20 blur-3xl" />
+   
     </>
   );
 };
@@ -122,7 +124,7 @@ const Question = ({ question, answer }) => {
             },
           }}
         >
-          <FiPlus
+          <AiOutlineClockCircle
             className={`text-2xl transition-colors ${
               open ? "text-slate-50" : "text-slate-400"
             }`}
@@ -143,95 +145,79 @@ const Question = ({ question, answer }) => {
   );
 };
 
-const TABS = ["Web dev", "Mobile dev", "UI/UX", "Copywriting"];
+const TABS = ["About", "Participation", "Prizes", "Sponsorship", "Tech Optimum Info"];
 
 const QUESTIONS = {
-  "Web dev": [
+  "About": [
     {
-      question: "What is web development?",
+      question: "What is the 'Time Machine hacks' hackathon?",
       answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
+        "The 'Time Machine hacks' is a 48-hour online hackathon hosted by the nonprofit organization Tech Optimum. It encourages participants to innovate and develop projects around the theme of 'Time Machine'."
     },
     {
-      question: "How do I know if I need it?",
+      question: "What's the inspiration behind the theme?",
       answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
+        "The theme 'Time Machine' encourages participants to think about the progression of technology, history, and future innovations. It's a unique opportunity to combine the past, present, and future in tech projects."
     },
     {
-      question: "What does it cost?",
+      question: "When does the hackathon start?",
       answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
-    },
-    {
-      question: "What about SEO?",
-      answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
-    },
+        "The hackathon will begin on [specific date], and run for a total of 48 hours."
+    }
   ],
-  "Mobile dev": [
+  "Participation": [
     {
-      question: "What is mobile development?",
+      question: "How can I register for the hackathon?",
       answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
+        "You can participate by registering on the Tech Optimum website. All skill levels are welcome, and there's no fee to join the hackathon."
     },
     {
-      question: "Can you do both iOS and Android?",
+      question: "What are the requirements for participating?",
       answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
+        "Participants need to have a reliable internet connection to join the online hackathon. While there's no specific tech skill requirement, having a basic understanding of coding will be helpful."
     },
     {
-      question: "Can you help with app store optimization?",
+      question: "Can I participate as a team?",
       answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
-    },
-    {
-      question: "How long does it take?",
-      answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
-    },
+        "Yes, participants can join as individuals or as part of a team. Specific details on team size and registration can be found on the Tech Optimum website."
+    }
   ],
-  "UI/UX": [
+  "Prizes": [
     {
-      question: "What is UI/UX?",
+      question: "What are the prizes for the winners?",
       answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
+        "Prizes for the winners vary, including mentorship opportunities, exclusive courses, tech gadgets, and more. Specific prize details will be announced closer to the event date."
     },
     {
-      question: "Can you audit my existing site?",
+      question: "How will the winners be selected?",
       answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
-    },
-    {
-      question: "How do you perform research?",
-      answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
-    },
-    {
-      question: "Does it make sense for my company?",
-      answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
-    },
+        "A panel of expert judges will evaluate projects based on creativity, alignment with the theme, technical complexity, and other criteria. Winners will be announced shortly after the hackathon ends."
+    }
   ],
-  Copywriting: [
+  "Sponsorship": [
     {
-      question: "What is copywriting?",
+      question: "How can I sponsor the hackathon?",
       answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
+        "If you're interested in sponsoring the hackathon, please refer to our sponsorship prospectus available on the Tech Optimum website. Your support will directly benefit the participants and further the mission of providing free coding courses to the community."
     },
     {
-      question: "Can you write my blog?",
+      question: "What benefits do sponsors receive?",
       answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
-    },
-    {
-      question: "Can you also help with ad design?",
-      answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
-    },
-    {
-      question: "How much does it cost?",
-      answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
-    },
+        "Sponsors can receive a range of benefits, including branding opportunities during the hackathon, mentions in promotional materials, and the chance to support a great cause. The specific benefits vary based on the sponsorship tier."
+    }
   ],
+  "Tech Optimum Info": [
+    {
+      question: "What is Tech Optimum?",
+      answer:
+        "Tech Optimum is a 501c3 nonprofit organization that offers free coding courses to individuals. Their mission is to make tech education accessible to everyone."
+    },
+    {
+      question: "How can I learn more about Tech Optimum?",
+      answer:
+        "To learn more about Tech Optimum and their initiatives, you can visit their official website at [Tech Optimum](https://techoptimum.org)."
+    }
+  ]
 };
+
+
