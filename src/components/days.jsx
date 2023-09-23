@@ -7,8 +7,8 @@ const Example = () => {
     <>
       <div className="flex flex-col items-center justify-center -mt-[-10vh]">
         <span className="font-semibold text-4xl text-white">How does Time Machine Hacks work?</span>
-        <span className="-mt[2rem]">
-          Time Machine Hacks is a 24-hour hackathon where you can build anything you want! 
+        <span className="-mt-[-.8rem] bg-gradient-to-r from-violet-500 to-indigo-500 bg-clip-text font-medium text-transparent">
+          A Quick Overview
         
         </span>
         <span className="mt-2 block rounded-full bg-indigo-600 px-4 py-1 text-center font-medium text-white md:hidden">
@@ -153,13 +153,13 @@ const ExampleFeature = ({ featureInView }) => {
         </div>
         <div className="p-2 font-mono text-sm text-slate-200">
           {commandsToShow.map((command, index) => (
-            <div key={index}>
+            <div class="z-100" key={index}>
               <span className="text-green-300">~</span> {command}
             </div>
           ))}
         </div>
         
-        <span className="absolute left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%] text-9xl text-slate-700">
+        <span className="z-10 absolute left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%] text-9xl text-slate-700">
           <featureInView.Icon />
         </span>
       </div>
