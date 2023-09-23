@@ -5,13 +5,12 @@ import {
   useScroll,
   motion,
 } from "framer-motion";
-import Image from "next/image"
+import Image from "next/image";
 const TrippyHero = () => {
   return (
     <section className="bg-white">
       <Navigation />
       <Hero />
-    
     </section>
   );
 };
@@ -102,9 +101,13 @@ const Copy = ({ opacity }) => {
         Time Machine Hacks
       </h1>
       <p className="text-center text-base md:text-lg">
-       A 48-hour hackathon for you to build your forgotten ideas and bring them back to life.
+        A 48-hour hackathon for you to build your forgotten ideas and bring them
+        back to life.
       </p>
-      <a href="#register" className="bg-black px-3 py-1.5 text-base font-semibold uppercase text-white md:text-lg">
+      <a
+        href="#register"
+        className="bg-black px-3 py-1.5 text-base font-semibold uppercase text-white md:text-lg"
+      >
         Register Now
       </a>
       <div className="absolute -left-28 -top-28 h-56 w-56 rotate-45 bg-black" />
@@ -135,17 +138,23 @@ const Navigation = () => {
       }}
       animate={hidden ? "hidden" : "visible"}
       transition={{ duration: 0.35, ease: "easeInOut" }}
-      className="fixed top-0 z-10 flex h-[56px] w-full items-center justify-between bg-black px-2 text-white"
+      className="fixed top-0 z-10 flex h-[56px] w-full items-center justify-between bg-black  px-12 text-white"
     >
-      <Image src="/tech-time.png" width={150} height="500"/>
-       
-
+      <a href="https://techoptimum.org">
+      <Image src="/tech-time.png" width={150} height="500" />
+      </a>
 
       <div className="flex gap-2">
-        <a href="#register" className="px-3 py-1.5 font-semibold uppercase text-white hover:bg-white/20">
+        <a
+          href="#register"
+          className="px-3 py-1.5 font-semibold uppercase text-white hover:bg-white/20"
+        >
           REGISTER
         </a>
-        <a  href="https://techoptimum.org/discord" className="bg-white px-3 py-1.5 font-semibold uppercase text-black">
+        <a
+          href="https://techoptimum.org/discord"
+          className="bg-white px-3 py-1.5 font-semibold uppercase text-black"
+        >
           DISCORD SERVER
         </a>
       </div>
@@ -160,8 +169,9 @@ const OverlayLogo = ({ scale }) => {
       className="pointer-events-none absolute inset-0 z-[5] grid place-content-center"
     >
       <Image width={350} height={350} src="/tech-optimum-whiteish.png" />
-      <h1 className="text-3xl font-light text-white text-center">presents...</h1>
-
+      <h1 className="text-3xl font-light text-white text-center">
+        presents...
+      </h1>
     </motion.div>
   );
 };
