@@ -102,11 +102,11 @@ const Copy = ({ opacity }) => {
         Time Machine Hacks
       </h1>
       <p className="text-center text-base md:text-lg">
-       Work on a project for 48-hours that you have *thought* about before but have never done it!
+       A 48-hour hackathon for you to build your forgotten ideas and bring them back to life.
       </p>
-      <button className="bg-black px-3 py-1.5 text-base font-semibold uppercase text-white md:text-lg">
+      <a href="#register" className="bg-black px-3 py-1.5 text-base font-semibold uppercase text-white md:text-lg">
         Register Now
-      </button>
+      </a>
       <div className="absolute -left-28 -top-28 h-56 w-56 rotate-45 bg-black" />
       <div className="absolute -bottom-24 -right-24 h-48 w-48 rotate-45 bg-black" />
     </motion.div>
@@ -137,29 +137,17 @@ const Navigation = () => {
       transition={{ duration: 0.35, ease: "easeInOut" }}
       className="fixed top-0 z-10 flex h-[56px] w-full items-center justify-between bg-black px-2 text-white"
     >
-      {/* SVG from logoipsum */}
-      <svg
-        width="50"
-        height="39"
-        viewBox="0 0 50 39"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-auto w-10 fill-white"
-      >
-        <path
-          d="M16.4992 2H37.5808L22.0816 24.9729H1L16.4992 2Z"
-          stopColor="#000000"
-        ></path>
+      <Image src="/tech-time.png" width={150} height="500"/>
        
-      </svg>
+
 
       <div className="flex gap-2">
-        <button className="px-3 py-1.5 font-semibold uppercase text-white hover:bg-white/20">
+        <a href="#register" className="px-3 py-1.5 font-semibold uppercase text-white hover:bg-white/20">
           REGISTER
-        </button>
-        <button className="bg-white px-3 py-1.5 font-semibold uppercase text-black">
+        </a>
+        <a  href="https://techoptimum.org/discord" className="bg-white px-3 py-1.5 font-semibold uppercase text-black">
           DISCORD SERVER
-        </button>
+        </a>
       </div>
     </motion.nav>
   );
@@ -172,6 +160,8 @@ const OverlayLogo = ({ scale }) => {
       className="pointer-events-none absolute inset-0 z-[5] grid place-content-center"
     >
       <Image width={350} height={350} src="/tech-optimum-whiteish.png" />
+      <h1 className="text-3xl font-light text-white text-center">presents...</h1>
+
     </motion.div>
   );
 };

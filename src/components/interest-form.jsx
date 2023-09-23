@@ -10,6 +10,7 @@ const TerminalHackathonRegister = () => {
     <section
      
       className="px-4 py-12 "
+      id="register"
     >
       <div
         ref={containerRef}

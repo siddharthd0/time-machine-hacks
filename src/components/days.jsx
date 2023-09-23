@@ -193,7 +193,7 @@ const features = [
       callout: "Day 3",
       title: "Showcase & Awards",
       description:
-        "It’s time to present your project to the world. Stand a chance to win amazing prizes, from cash to internships with leading tech firms.",
+        "It’s time to present your project to the world. Stand a chance to win amazing prizes, from cash prizes to exclusive memberships and premium subscriptions.",
       contentPosition: "r",
       Icon: FiDollarSign,
     },

@@ -51,7 +51,7 @@ const ShiftingCountdown = () => {
         <span className="mb-4 bg-gradient-to-r from-violet-500 to-indigo-500 bg-clip-text font-medium text-transparent">
           We&apos;re as excited as you are!
         </span>
-        <span className="mb-8 text-5xl font-bold">Days Until Time Machine Hacks...</span>
+        <span className="mb-8 text-5xl font-bold">⏰ Time Machine Hacks</span>
       </div>
       <div className="w-full max-w-5xl mx-auto flex items-center ">
         <CountdownItem num={remaining.days} text="days" />
