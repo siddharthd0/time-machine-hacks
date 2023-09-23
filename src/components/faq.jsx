@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { FiPlus } from "react-icons/fi";
 import React, { useState } from "react";
-import { AiOutlineClockCircle} from "react-icons/ai";
+import { AiOutlineClockCircle } from "react-icons/ai";
 
 export const TabsFAQ = () => {
   const [selected, setSelected] = useState(TABS[0]);
@@ -25,8 +25,6 @@ const Heading = () => {
         </span>
         <span className="mb-8 text-5xl font-bold">FAQs</span>
       </div>
-
-   
     </>
   );
 };
@@ -139,85 +137,89 @@ const Question = ({ question, answer }) => {
         }}
         className="overflow-hidden text-slate-400"
       >
-        <p>{answer}</p>
+      <p dangerouslySetInnerHTML={{ __html: answer }}></p>
       </motion.div>
     </motion.div>
   );
 };
 
-const TABS = ["About", "Participation", "Prizes", "Sponsorship", "Tech Optimum Info"];
+const TABS = [
+  "About",
+  "Participation",
+  "Prizes",
+  "Sponsorship",
+  "Tech Optimum Info",
+];
 
 const QUESTIONS = {
-  "About": [
+  About: [
     {
-      question: "What is the 'Time Machine hacks' hackathon?",
+      question: "What is Time Machine Hacks?",
       answer:
-        "The 'Time Machine hacks' is a 48-hour online hackathon hosted by the nonprofit organization Tech Optimum. It encourages participants to innovate and develop projects around the theme of 'Time Machine'."
+        "Time Machine Hacks is a 48-hour online hackathon hosted by Tech Optimum. It encourages participants to innovate and develop projects that they once had, but forgot about, and want to revive it. Hence the name, 'Time Machine'.",
     },
     {
       question: "What's the inspiration behind the theme?",
       answer:
-        "The theme 'Time Machine' encourages participants to think about the progression of technology, history, and future innovations. It's a unique opportunity to combine the past, present, and future in tech projects."
+        "As technologists ourselves, we know the struggle of having a good idea, starting a project, but then forgetting about it forever. Time Machine Hacks is a chance for you to revive those projects and ideas, and bring them to life.",
     },
     {
       question: "When does the hackathon start?",
       answer:
-        "The hackathon will begin on [specific date], and run for a total of 48 hours."
-    }
+        "The hackathon will begin on TBD, and run for a total of 48 hours.",
+    },
   ],
-  "Participation": [
+  Participation: [
     {
       question: "How can I register for the hackathon?",
       answer:
-        "You can participate by registering on the Tech Optimum website. All skill levels are welcome, and there's no fee to join the hackathon."
+        "You can participate by registering on the Devpost as well as filling out the registration form above.",
     },
     {
       question: "What are the requirements for participating?",
       answer:
-        "Participants need to have a reliable internet connection to join the online hackathon. While there's no specific tech skill requirement, having a basic understanding of coding will be helpful."
+        "Participants need to have a reliable internet connection to join the online hackathon. While there's no specific tech skill requirement, having a basic understanding of coding will be helpful.",
     },
     {
       question: "Can I participate as a team?",
       answer:
-        "Yes, participants can join as individuals or as part of a team. Specific details on team size and registration can be found on the Tech Optimum website."
-    }
+        "Yes, participants can join as individuals or as part of a team. Specific details on team size and registration can be found on the Devpost.",
+    },
   ],
-  "Prizes": [
+  Prizes: [
     {
       question: "What are the prizes for the winners?",
       answer:
-        "Prizes for the winners vary, including mentorship opportunities, exclusive courses, tech gadgets, and more. Specific prize details will be announced closer to the event date."
+        "Prizes for the winners vary, including mentorship opportunities, exclusive certificates, tech gadgets, and more. Specific prize details will be announced closer to the event date.",
     },
     {
       question: "How will the winners be selected?",
       answer:
-        "A panel of expert judges will evaluate projects based on creativity, alignment with the theme, technical complexity, and other criteria. Winners will be announced shortly after the hackathon ends."
-    }
+        "A panel of expert judges will evaluate projects based on creativity, alignment with the theme, technical complexity, and other criteria. Winners will be announced shortly after the hackathon ends.",
+    },
   ],
-  "Sponsorship": [
+  Sponsorship: [
     {
       question: "How can I sponsor the hackathon?",
       answer:
-        "If you're interested in sponsoring the hackathon, please refer to our sponsorship prospectus available on the Tech Optimum website. Your support will directly benefit the participants and further the mission of providing free coding courses to the community."
+        `If you're interested in sponsoring the hackathon, please refer to our <a class="anchor-style" href='https://techoptimum.org/sponsorship'>Sponsorship Prospectus </a> available on the Tech Optimum website. Your support will directly benefit the participants and further the mission of providing free coding education to the community.`,
     },
     {
       question: "What benefits do sponsors receive?",
       answer:
-        "Sponsors can receive a range of benefits, including branding opportunities during the hackathon, mentions in promotional materials, and the chance to support a great cause. The specific benefits vary based on the sponsorship tier."
-    }
+        `Sponsors can receive a range of benefits, including branding opportunities during the hackathon, mentions in promotional materials, and the chance to support a great cause. The specific benefits vary based on the sponsorship tier found in our <a class="anchor-style" href='https://techoptimum.org/sponsorship'>Sponsorship Prospectus </a>.`,
+    },
   ],
   "Tech Optimum Info": [
     {
       question: "What is Tech Optimum?",
       answer:
-        "Tech Optimum is a 501c3 nonprofit organization that offers free coding courses to individuals. Their mission is to make tech education accessible to everyone."
+        "Tech Optimum is a 501(c)3 nonprofit organization that offers free coding courses & hosts coding competitions (like this one!). Our mission is to make tech education accessible to everyone.",
     },
     {
       question: "How can I learn more about Tech Optimum?",
       answer:
-        "To learn more about Tech Optimum and their initiatives, you can visit their official website at [Tech Optimum](https://techoptimum.org)."
-    }
-  ]
+        `To learn more about Tech Optimum and their initiatives, you can visit our official website at <a class="anchor-style" href='https://techoptimum.org/'>techoptimum.org</a>.`,
+    },
+  ],
 };
-
-
